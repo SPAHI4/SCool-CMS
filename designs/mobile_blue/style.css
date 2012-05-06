@@ -1,0 +1,145 @@
+/*  Дизайн предоставлен студией Diz4Wap.Ru
+Ссылку на сайт Diz4Wap.Ru удалять ЗАПРЕЩЕНО!  */
+
+body {
+background: #fff;
+font-size: 11px;
+color: #767676;
+font-family: Tahoma;
+margin: auto;
+max-width: 600px;}
+
+a, a:link, a:visited, a:active {
+color: #366CBD;
+text-decoration: none;
+cursor: pointer;
+}
+
+a:hover {text-decoration: underline;}
+
+.header img {margin: 0 0 0 5px;}
+.header {
+background: #366CBD url(images/head.gif) repeat-x top;
+height: 65px;
+border-radius: 8px 8px 0 0;
+border: 1px solid #265AA9;
+margin: 1px 0 0 0;
+}
+.header span {
+  margin: 5px;
+  padding-left: 15px;
+  color: #fff;
+  font-size: 20px;
+  position: relative;
+  top: 15 px;
+  right: 50px;
+}
+
+.footer a {color: #fff;}
+.footer {
+background: #366CBD url(images/foot.gif) repeat-x bottom;
+border-radius: 0 0 8px 8px;
+color: #fff;
+padding: 4px 4px 5px 4px;
+text-align: center;
+border: 1px solid #265AA9;
+text-shadow: 1px 1px 0px #265AA9;
+}
+
+.ads {
+background: #F5F5F5;
+padding: 2px 4px 2px 6px;
+border-top: 1px solid #EBEAEA;
+border-bottom: 1px solid #EBEAEA;
+margin: 1px 0 1px 0;
+}
+
+#status {
+  opacity: 0.5;
+  position: fixed;
+  width: 225px;
+  min-height: 40px;
+  float: right;
+  top: 10px;
+  right: 130px;
+  text-align: center;
+  padding-top: 10px;
+  color: #fff;
+  font-size: 18px;
+  display: none;
+  z-index: 999;
+  border-radius: 7px;
+  box-shadow: 3px 3px 7px black;
+}
+
+.error {
+  background: red;
+  display: inline-block;
+}
+
+.message {
+  background: green;
+  display: inline-block;
+}
+
+.loading {
+  background: #366CBD url(images/head.gif) repeat-x top;
+  display: block;
+}
+
+.quote {
+  background: #F1F5F5;
+  border: 1px dashed;
+  border-left: #366CBD 5px solid;
+  padding: 4px;
+  margin: 5px;
+}
+
+.quote_author {
+  background: white;
+  padding: 3px;
+  margin: 3px;
+  margin-left: -4px;
+  margin-top: 0;
+}
+
+.main img, .quick img {vertical-align: 1px; margin: 0 2px 0 0;}
+.main {
+line-height: 135%;
+padding: 2px 4px 2px 6px;
+margin: 1px 0 1px 0;
+border-left: 1px solid #F3F3F3;
+border-right: 1px solid #F3F3F3;
+}
+
+.label {
+margin: 1px 0 1px 0;
+background: #366CBD;
+text-shadow: 1px 1px 0px #265AA9;
+color: #fff;
+padding: 3px 3px 3px 5px;
+}
+
+.quick, .item0 {
+background: #ECF4FF;
+line-height: 135%;
+padding: 4px;
+margin: 1px;
+border: #D5E7FF 1px solid;
+}
+
+.item0 {
+  border-radius: 5px;
+}
+
+.item1 {
+line-height: 135%;
+padding: 4px;
+background: #FBFDFF;
+margin: 1px;
+border: #E8F3FF 1px solid;
+border-radius: 5px;
+}
+
+/*  Дизайн предоставлен студией Diz4Wap.Ru
+Ссылку на сайт Diz4Wap.Ru удалять ЗАПРЕЩЕНО!  */
