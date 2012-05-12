@@ -1,12 +1,13 @@
 <?php
 
-//Соль для кодировки пароля; при смене - потеря всех паролей
+//Соль для кодировки пароля; 
+//При изменении - все пароли уже зарегистрированных пользователей становятся недействительными
 $salt = 'salt';
 
 
 function getLastPage($count) {
-	
-	return ceil($count / $config['settings']['itemsPerPage']);
+	$config=Registry::get('config');
+	return ceil($count / $config['settings']['items_per_page']);
 }
 
 //Вырезает содержание тега [cut]
@@ -31,7 +32,7 @@ function hashEncode($pass)
 
 function clientIP()
 	//Автор не я
-    //Фигня, багованная
+//Фигня, багованная
 {
 	if (isset ($_SERVER['HTTP_X_REAL_IP'])) {
 		return $_SERVER['HTTP_X_REAL_IP'];
@@ -52,35 +53,23 @@ function clientIP()
 
 
 function getLogin($uid) {
-    $db=Registry::get('db');
+	$db=Registry::get('db');
 	return $db->query("select `login` from `users` where `id` = '".intval($uid)."';")->fetchColumn();
 }
 
 function getTime($time = 0) {
-	if (!$time)
-		$time = time();
-	$timep = "".date("j M / H:i", $time)."";
-	$time_p[0] = date("j n ", $time);
-	$time_p[1] = date("H:i", $time);
-	if ($time_p[0] == date("j n "))
-		$timep = date("H:i:s", $time);
-	if ($time_p[0] == date("j n ")) {
-		$timep = date("H:i:s", $time);
-		$timep .= " <small><i>(сегодня)</i></small> ";
+	$monthes=array("Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сент", "Октября", "Ноября", "Декабря");
+	if($time){
+		$shift=time()-$time;
+		if($shift<10)return 'Только что';
+		elseif($shift<60)return $shift.' секунд назад';
+		elseif($shift<3600)return floor($shift/60).' минут назад';
+		elseif(date('d')==date('d',$time)) return 'Сегодня в '.date('H:i',$time);
+		elseif(date('d')-1==date('d',$time)) return 'Вчера в '.date('H:i',$time);
+		elseif(date('Y')==date('Y',$time)) return date('j',$time).' '.$monthes[date('n',$time)-1].' в '.date('H:i',$time);
+		elseif(date('Y')!=date('Y',$time)) return date('j',$time).' '.$monthes[date('n',$time)-1].' '.date('Y',$time).' в '.date('H:i',$time);
 	}
-	$timep = str_replace("Jan", "Января", $timep);
-	$timep = str_replace("Feb", "Февраля", $timep);
-	$timep = str_replace("Mar", "Марта", $timep);
-	$timep = str_replace("May", "Мая", $timep);
-	$timep = str_replace("Apr", "Апреля", $timep);
-	$timep = str_replace("Jun", "Июня", $timep);
-	$timep = str_replace("Jul", "Июля", $timep);
-	$timep = str_replace("Aug", "Августа", $timep);
-	$timep = str_replace("Sep", "Сент", $timep);
-	$timep = str_replace("Oct", "Октября", $timep);
-	$timep = str_replace("Nov", "Ноября", $timep);
-	$timep = str_replace("Dec", "Декабря", $timep);
-	return $timep;
+	else return date('H:i:s');
 }
 
 //Ниже две функции для склонения имен
