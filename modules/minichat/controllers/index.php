@@ -7,7 +7,7 @@ Class Controller_Index Extends Controller {
 		$db=Registry::get("db");
 		$user=Registry::get("user");
 		if ($this->user && isset($_POST['message'])) {
-			if (strlen($_POST['message']) > 2501)
+			if (strlen($_POST['message']) > 250)
 				$this->addError('Длинное сообщение');
 			else
 			if (strlen($_POST['message']) < 2)
