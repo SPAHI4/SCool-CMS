@@ -12,7 +12,7 @@ Class Controller_Index Extends Controller {
 			else
 			if (strlen($_POST['message']) < 2)
 				$this->addError('Короткое сообщение');
-			if ($db->query("select count(*) from `mini_chat` where `id_user` = '$user[id]' and `message` = '".addslashes($_POST['message'])."'")->fetchColumn())
+			if ($db->query("select count(*) from `mini_chat` where `id_user` = '$user[id]' and `message` = '".inputFilter($_POST['message'])."'")->fetchColumn())
 				$this->addError("Ваше сообщение повторяет предыдущее");
 			if ($db->query("select `time` from `mini_chat` where `id_user` = '$user[id]' order by `id` desc limit 1")->fetchColumn() + 30 > time())
 				$this->addError("Вы уже написали сообщение за текущие 30 секунд");
